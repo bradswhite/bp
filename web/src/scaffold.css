@@ -2,6 +2,40 @@
   normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css
 */
 
+/*.rw-segment {
+  border-radius: 0.5rem;
+  border-width: 1px;
+  border-color: #e5e7eb;
+  overflow: hidden;
+  width: 100%;
+  scrollbar-color: #a1a1aa transparent;
+}
+.rw-segment::-webkit-scrollbar {
+  height: initial;
+}
+.rw-segment::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-color: #e2e8f0;
+  border-style: solid;
+  border-radius: 0 0 10px 10px;
+  border-width: 1px 0 0 0;
+  padding: 2px;
+}
+.rw-segment::-webkit-scrollbar-thumb {
+  background-color: #a1a1aa;
+  background-clip: content-box;
+  border: 3px solid transparent;
+  border-radius: 10px;
+}
+.rw-table-wrapper-responsive {
+  overflow-x: auto;
+}
+.rw-table-wrapper-responsive .rw-table {
+  min-width: 48rem;
+}*/
+
+
+
 .rw-scaffold *,
 .rw-scaffold ::after,
 .rw-scaffold ::before {

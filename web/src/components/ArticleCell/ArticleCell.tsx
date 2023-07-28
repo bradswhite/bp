@@ -1,5 +1,6 @@
 import type { FindArticleQuery, FindArticleQueryVariables } from 'types/graphql'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
+import { timeTag } from 'src/lib/formatters'
 
 import Article from 'src/components/Article';
 
@@ -41,7 +42,7 @@ export const Success = ({
     <article className='w-2/3'>
       <header>
         <h2 className='text-3xl font-bold text-gray-900 dark:text-gray-100'>{title}</h2>
-        <span className='mt-1 text-sm font-normal text-gray-600 dark:text-gray-500'>Posted at: {createdAt}</span>
+        <span className='mt-1 text-sm font-normal text-gray-600 dark:text-gray-500'>Posted at: {timeTag(createdAt)}</span>
       </header>
       <p className='mt-10 text-md font-normal text-gray-700 dark:text-gray-400'>{body}</p>
     </article>

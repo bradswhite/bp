@@ -57,7 +57,6 @@ const ContactPage = () => {
         className={clsx(
           'w-screen py-20',
           'bg-white dark:bg-gray-800',
-          'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75',
           'border-y border-gray-200 dark:border-gray-700',
           'justify-center flex'
         )}

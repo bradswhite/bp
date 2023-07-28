@@ -1,6 +1,7 @@
 import { Link, routes } from '@redwoodjs/router';
 import Balancer from 'react-wrap-balancer';
 import { clsx } from 'clsx';
+import { timeTag } from 'src/lib/formatters'
 
 const Article = ({ article: {
   id, title, body, createdAt
@@ -20,7 +21,7 @@ const Article = ({ article: {
             <h2 className='text-lg font-medium text-gray-900 dark:text-gray-100'>{title}</h2>
           </header>
           <p className='mt-2 text-md font-normal text-gray-700 dark:text-gray-400'>{body}</p>
-          <div className='mt-1 text-sm font-normal text-gray-600 dark:text-gray-500'>Posted at: {createdAt}</div>
+          <div className='mt-1 text-sm font-normal text-gray-600 dark:text-gray-500'>Posted at: {timeTag(createdAt)}</div>
         </Balancer>
       </article>
     </Link>
