@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { clsx } from 'clsx';
 import { Link, routes } from '@redwoodjs/router';
 
 import { useAuth } from 'src/auth';
@@ -51,7 +51,14 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
       </div>
     </header>
 
-    <main className='w-screen overflow-x-hidden'>
+    <main
+      className={clsx(
+        'w-screen p-20 overflow-x-hidden',
+        'bg-gray-50 dark:bg-gray-800',
+        'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75',
+        'border-y border-gray-200 dark:border-gray-700'
+      )}
+    >
       {children}
     </main>
   </>

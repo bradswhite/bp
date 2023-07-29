@@ -1,9 +1,5 @@
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
-import { toast } from '@redwoodjs/web/toast'
-
-import { useState } from 'react';
-import Toast from "src/components/UIComponents/Toast";
 import Button from "src/components/UIComponents/shared/Button";
 import Table from "src/components/UIComponents/Table";
 
@@ -24,10 +20,6 @@ interface Props {
 }
 
 const Post = ({ post: { id, title, body, createdAt } }: Props) => {
-  const [toastToggle, toggleToast] = useState(false);
-  const [toastTitle, setToastTitle] = useState<string>();
-  const [toastDesc, setToastDesc] = useState<string>();
-
   const [deletePost] = useMutation(DELETE_POST_MUTATION, {
     onCompleted: () => {
       setToastTitle('Deletion Successful');
@@ -50,8 +42,6 @@ const Post = ({ post: { id, title, body, createdAt } }: Props) => {
 
   return (
     <>
-      <Toast title={toastTitle} desc={toastDesc} toggle={toastToggle} />
-
       <Table
         headings={[ `Post ${id} Detail` ]}
         dataRows={[

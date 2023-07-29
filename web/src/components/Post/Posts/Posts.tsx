@@ -1,7 +1,5 @@
 import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
-import { useState } from 'react';
-import Toast from "src/components/UIComponents/Toast";
 import Button from "src/components/UIComponents/shared/Button";
 import Table from "src/components/UIComponents/Table";
 
@@ -18,21 +16,18 @@ const DELETE_POST_MUTATION = gql`
   }
 `
 
-const PostsList = ({ posts }: FindPosts) => {
-  const [toastToggle, toggleToast] = useState(false);
-  const [toastTitle, setToastTitle] = useState<string>();
-  const [toastDesc, setToastDesc] = useState<string>();
+interface PostsListProps extends FindPosts {
+  toast: (string, string) => void;
+}
+
+const PostsList = ({ posts, toast }: PostsListProps) => {
 
   const [deletePost] = useMutation(DELETE_POST_MUTATION, {
     onCompleted: () => {
-      setToastTitle('Deletion Successful');
-      setToastDesc('Post deleted');
-      toggleToast(true);
+      toast('Deletion Successful', 'Post deleted');
     },
     onError: (error) => {
-      setToastTitle('Error Message');
-      setToastDesc(error.message);
-      toggleToast(true);
+      toast('Error Message', error.message);
     },
     // This refetches the query on the list page. Read more about other ways to
     // update the cache over here:
@@ -49,8 +44,6 @@ const PostsList = ({ posts }: FindPosts) => {
 
   return (
     <>
-      <Toast title={toastTitle} desc={toastDesc} toggle={toastToggle} />
-
       <Table
         headings={[ 'Id', 'Title', 'Body', 'Created at' ]}
         dataRows={posts.map(({

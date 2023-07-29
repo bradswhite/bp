@@ -53,14 +53,7 @@ const ContactPage = () => {
 
       <Toast title={title} desc={desc} toggle={toggle} />
       
-      <main
-        className={clsx(
-          'w-screen py-20',
-          'bg-white dark:bg-gray-800',
-          'border-y border-gray-200 dark:border-gray-700',
-          'justify-center flex'
-        )}
-      >
+      <div className='justify-center flex'>
         <article className='w-2/3 text-gray-700 dark:text-gray-400'>
           <header>
             <h2 className='text-3xl font-bold text-gray-900 dark:text-gray-100'>Contact</h2>
@@ -160,7 +153,7 @@ const ContactPage = () => {
             </div>
           </Form>
         </article>
-      </main>
+      </div>
     </>
   )
 }

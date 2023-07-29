@@ -1,3 +1,5 @@
+import { useEffect, useState, cloneElement } from 'react';
+import Toast from "src/components/UIComponents/Toast";
 import { Link, routes } from '@redwoodjs/router'
 import Button from "src/components/UIComponents/shared/Button";
 import { clsx } from 'clsx';
@@ -17,8 +19,24 @@ const ScaffoldLayout = ({
   buttonTo,
   children,
 }: LayoutProps) => {
+  const [toastToggle, toggleToast] = useState(false);
+  const [toastTitle, setToastTitle] = useState<string>();
+  const [toastDesc, setToastDesc] = useState<string>();
+
+  const toast = (title: string, desc: string): void => {
+    setToastTitle(title);
+    setToastDesc(desc);
+    toggleToast(true);
+  };
+  useEffect(() => {
+    console.log(children)
+    //console.log(cloneElement(children, { toast }))
+  }, [])
+
   return (
-    <div>
+    <>
+      <Toast title={toastTitle} desc={toastDesc} toggle={toastToggle} />
+      
       <header className="rw-header">
         <h1 className="rw-heading rw-heading-primary">
           <Link to={routes[titleTo]()} className="text-2xl font-bold text-gray-900 dark:text-gray-100 px-20">
@@ -39,9 +57,11 @@ const ScaffoldLayout = ({
           'justify-center flex'
         )}
       >
-        <div className='w-2/3 text-gray-700 dark:text-gray-400'>{children}</div>
+        <div className='w-2/3 text-gray-700 dark:text-gray-400'>
+          {/*cloneElement(children, { toast })*/ children}
+        </div>
       </main>
-    </div>
+    </>
   )
 }
 

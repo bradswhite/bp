@@ -2,7 +2,7 @@ import type { FindPosts } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
-
+//import { useEffect } from 'react'
 import Posts from 'src/components/Post/Posts'
 
 export const QUERY = gql`
@@ -33,6 +33,13 @@ export const Failure = ({ error }: CellFailureProps) => (
   <div className="rw-cell-error">{error?.message}</div>
 )
 
-export const Success = ({ posts }: CellSuccessProps<FindPosts>) => {
-  return <Posts posts={posts} />
+interface SuccessProps extends CellSuccessProps<FindPosts> {
+  toast: (string, string) => void;
+}
+
+export const Success = ({ posts, toast }: SuccessProps) => {
+  /*useEffect(() => {
+    toast('Howdy!', 'ajskjdkjfa');
+  }, [])*/
+  return <Posts posts={posts} toast={toast} />
 }

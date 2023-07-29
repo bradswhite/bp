@@ -1,11 +1,13 @@
-import PostCell from 'src/components/Post/PostCell'
+import PostCell from 'src/components/Post/PostCell';
+import toastPropsType from 'src/types/toast';
 
 type PostPageProps = {
-  id: number
+  id: number;
+  toast: toastPropsType;
 }
 
-const PostPage = ({ id }: PostPageProps) => {
-  return <PostCell id={id} />
+const PostPage = ({ id, toast }: PostPageProps) => {
+  return <PostCell id={id} toast={toast} />
 }
 
 export default PostPage
