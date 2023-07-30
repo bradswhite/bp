@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import { clsx } from 'clsx';
 import { Link, routes } from '@redwoodjs/router';
 
@@ -7,9 +7,10 @@ import { useAuth } from 'src/auth';
 import NavigationMenu from 'src/components/UIComponents/NavigationMenu';
 import Button from 'src/components/UIComponents/shared/Button';
 import Login from 'src/components/Login';
+import ThemeSwitcher from 'src/components/UIComponents/shared/ThemeSwitcher';
 
 type BlogLayoutProps = {
-  children?: React.ReactNode
+  children?: ReactNode
 }
 
 const BlogLayout = ({ children }: BlogLayoutProps) => {
@@ -23,19 +24,18 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
         <Link to={routes.home()}>Boilerplate App Code</Link>
       </h1>
 
-      <NavigationMenu links={[
-        { title: 'About', href: '/about' },
-        { title: 'Contact', href: '/contact' }
-      ]} />
+      <NavigationMenu links={
+        isAuthenticated ? [
+          { title: 'About', href: '/about' },
+          { title: 'Contact', href: '/contact' },
+          { title: 'Edit Posts', href: '/posts' }
+        ] : [
+          { title: 'About', href: '/about' },
+          { title: 'Contact', href: '/contact' }
+        ]}
+      />
 
-      {/*<nav>
-        <ul>
-          <li><Link to={routes.about()}>About</Link></li>
-          <li><Link to={routes.contact()}>Contact</Link></li>
-        </ul>
-      </nav>*/}
-
-      <div className='text-gray-900 dark:text-gray-100'>
+      <div className='text-gray-900 dark:text-gray-100 font-sm'>
         {isAuthenticated ? (
           <div>
             <span>Logged in as {currentUser.email}</span>{' '}
@@ -48,6 +48,10 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
             <Button>Login</Button>
           </Login>
         )}
+      </div>
+
+      <div>
+        <ThemeSwitcher />
       </div>
     </header>
 

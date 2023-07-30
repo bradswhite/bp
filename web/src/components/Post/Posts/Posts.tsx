@@ -76,6 +76,19 @@ const PostsList = ({ posts, toast }: PostsListProps) => {
           </nav>
         ])}
       />
+
+      <div className='w-full flex justify-center py-6'>
+        <nav className='flex gap-4'>
+          <Link
+            to={routes.newPost()}
+            title='Create New Post'
+          >
+            <Button color='green'>
+              <span className='text-2xl leading-5 mr-1'>+</span> New Post
+            </Button>
+          </Link>
+        </nav>
+      </div>
     </>
   )
 }

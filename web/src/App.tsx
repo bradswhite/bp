@@ -6,7 +6,6 @@ import Routes from 'src/Routes'
 
 import { AuthProvider, useAuth } from './auth'
 
-import './scaffold.css'
 import './index.css'
 
 const App = () => (

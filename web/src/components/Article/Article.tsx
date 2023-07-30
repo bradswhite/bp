@@ -13,7 +13,7 @@ const Article = ({ article: {
           'max-w-md rounded-lg p-4 md:w-full',
           'bg-white dark:bg-gray-700',
           'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75',
-          'border border-gray-200 dark:border-gray-700 shadow-xl cursor-pointer'
+          'border border-gray-200 dark:border-gray-600 shadow-xl cursor-pointer'
         )}
       >
         <Balancer>
