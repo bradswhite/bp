@@ -35,11 +35,11 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
         ]}
       />
 
-      <div className='text-gray-900 dark:text-gray-100 font-sm'>
+      <div className='text-gray-900 dark:text-gray-100 text-xs'>
         {isAuthenticated ? (
           <div>
             <span>Logged in as {currentUser.email}</span>{' '}
-              <Button onClick={logOut}>
+            <Button onClick={logOut}>
               Logout
             </Button>
           </div>
@@ -50,9 +50,7 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
         )}
       </div>
 
-      <div>
-        <ThemeSwitcher />
-      </div>
+      <ThemeSwitcher />
     </header>
 
     <main

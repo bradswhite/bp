@@ -16,9 +16,9 @@ export const QUERY = gql`
 `
 
 export const Loading = () => (
-  <div className='grid flex gap-10 grid-cols-3'>
-    {new Array(4).fill(undefined).map(() => (
-      <SkeletonArticle />
+  <div className='grid flex grid-col-1 gap-6 md:gap-10 md:grid-cols-3'>
+    {new Array(4).fill(undefined).map((n, i) => (
+      <SkeletonArticle key={i} />
     ))}
   </div>
 );
@@ -30,7 +30,7 @@ export const Failure = ({ error }: CellFailureProps) => (
 )
 
 export const Success = ({ articles }: CellSuccessProps<ArticlesQuery>) => {
-  return <div className='grid flex gap-10 grid-cols-3'>
+  return <div className='grid flex grid-col-1 gap-6 md:gap-10 md:grid-cols-3'>
     {articles.map(article => (
       <Article key={article.id} article={article} />
     ))}
